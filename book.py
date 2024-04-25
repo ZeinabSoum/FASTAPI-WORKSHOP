@@ -43,6 +43,9 @@ def get_book(request: schemas.book, db: Session = Depends(get_db)):
     return get_book
 
 # Retrieve details for a specific book:
+@route.get("/api/v1/book")
+def all_book(request: schemas.book, db: Session = Depends(get_db)):
+    return db
 
 # Update an existing book:
 
