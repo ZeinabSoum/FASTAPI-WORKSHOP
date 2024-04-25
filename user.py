@@ -35,7 +35,7 @@ def all_users(request: schemas.user, db: Session = Depends(get_db)):
 # Retrieve details for a specific user:
 
 # Update an existing user:
-def update_user(request: schemas.book, db: Session = Depends(get_db)):
+def update_user(request: schemas.user, db: Session = Depends(get_db)):
     for user in db:
         if user.id == id:
             if len(user.first_name) > 0:
@@ -50,3 +50,14 @@ def update_user(request: schemas.book, db: Session = Depends(get_db)):
     return user
 
 # delete an existing user:
+
+@route.delete("/api/v1/user/{id}")
+def remove_user(request: schemas.user, db: Session = Depends(get_db)):
+    for user in db: 
+        if user.id == id:
+            db.remove(user)
+            return db
+    raise route(
+        status_code= 404,
+        detail= f"Error 404 can not delte the user with id {id}, not found."
+    )
