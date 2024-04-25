@@ -35,5 +35,18 @@ def all_users(request: schemas.user, db: Session = Depends(get_db)):
 # Retrieve details for a specific user:
 
 # Update an existing user:
+def update_user(request: schemas.book, db: Session = Depends(get_db)):
+    for user in db:
+        if user.id == id:
+            if len(user.first_name) > 0:
+                user.first_name = user.first_name
+            else:  
+                return {"Message" :"Fist_name cannot be empty"}
+
+            if len(user.last_name) > 0 :
+                user.last_name = user.last_name
+            else:  
+                return {"Message" :"Last_name cannot be empty"}
+    return user
 
 # delete an existing user:
