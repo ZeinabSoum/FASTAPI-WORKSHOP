@@ -26,7 +26,22 @@ def add_book(request: schemas.book, db: Session = Depends(get_db)):
     return new_book
 
 # Retrieve a list of all books:
-book1 = 2
+@route.post("/books")
+def get_book(request: schemas.book, db: Session = Depends(get_db)):
+    
+    get_book = models.book (title = request.title,
+                           author =  request.author,
+                           description = request.description,
+                           published_year = request.published_year,
+                           publisher = request.publisher
+                        )
+
+    db.add(get_book)
+    db.commit()
+    db.refresh(get_book)
+
+    return get_book
+
 # Retrieve details for a specific book:
 
 # Update an existing book:

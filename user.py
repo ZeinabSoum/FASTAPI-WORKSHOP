@@ -9,7 +9,23 @@ import schemas, models
 route = APIRouter()
 
 
-# Add new user
+# Add new use
+@route.post("/user")
+def add_user(request: schemas.user, db: Session = Depends(get_db)):
+    
+    new_user= models.bookuser (id = request.id,
+            
+                            first_name  =  request. first_name ,
+                           last_name = request. last_name,
+                           gender = request. gender,
+                           roles = request. roles
+                        )
+
+    db.add(new_user)
+    db.commit()
+    db.refresh(new_user)
+
+    return new_user
 
 # Retrieve a list of all users:
 
