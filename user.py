@@ -28,6 +28,9 @@ def add_user(request: schemas.user, db: Session = Depends(get_db)):
     return new_user
 
 # Retrieve a list of all users:
+@route.get("/api/v1/users")
+def all_users(request: schemas.user, db: Session = Depends(get_db)):
+    return db
 
 # Retrieve details for a specific user:
 
