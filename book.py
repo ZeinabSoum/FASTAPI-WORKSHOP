@@ -8,9 +8,6 @@ import schemas, models
 
 route = APIRouter()
 
-
-
-
 # Add new book
 @route.post("/books")
 def add_book(request: schemas.book, db: Session = Depends(get_db)):
@@ -29,7 +26,7 @@ def add_book(request: schemas.book, db: Session = Depends(get_db)):
     return new_book
 
 # Retrieve a list of all books:
-
+book1 = 2
 # Retrieve details for a specific book:
 
 # Update an existing book:
